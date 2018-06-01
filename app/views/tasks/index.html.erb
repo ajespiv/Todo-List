@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My To Do List  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH4SURBVFhH7dO/LwNhGAfwM1lITUa/E2Im/gCD0URETGKTSKMDu1pYivhVhoogYnCpoS3qiGurZWIhIhI/F6Ipqk3w6NO+J8ilfe9675W4b/Jdem/v+STPe5wRI0ZUxBaKA/MGY4dknPLIvlDragHsE16gwxll0tbV59uy8UgftmQyUktG00UC4ovKJx71aDsZTZc/CZR+Y1raeyn9wQD+rAHMtv8SOCocg82zL/tMcVkARzwhaGhqhp7uRjgSu8DtnwN78FL2bMayWjHiHlyFADv5EN6phvB8FSxt+2XPpi0r4NFu5ycu6igGmOIgNlOkHMkK6Ak4vuGkKkayAs7sXSTWWvkNpwrJCohd2vYlMKbskCyB2PRIU2YkayA2K6QeQKxqpF5ArCqknkCsYqTeQKwiZC6AWGokNTAYP8O28c/3WgCxVEhaoJSKiUi/VkBsJuSKd/OUjKaL1kBsOmTcXvD6Ps3Vk/GZUzodqUngWrByw9Q2HTLgHHI7N3z0SClyg7KpHHLdtfDEb/mA3xLDvCDWkdF0kT4cLbssCFcxe+Eb4jzuxWgK54NVr3h/bB08uDGblSFZBO9cYG3YJeF4r3h3MmA9ubZY4MpiOSfHchtcZ3KtX3BJYG/vGDmS++CHgWv9gpsFjssjj39H8M7hWhO4kRSO4z4A0dirVpkGAakAAAAASUVORK5CYII="></h1>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task), remote: true %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
+<div class="header">
+<h3>Todo List  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAETSURBVEhL7dbLDsFAGIbhXp6EoLfDuAILdnb2tqJGkFi4ABEROxJ2TnGqQ0R/PmnTSrvojM5G/cm7aKadp6SL0eI7WWaksoxv0zmDVIS99RxP2pw7GcY3hdqcinynJOytM762OXfwVkEPRBkMm3PnD6voN+FSe0/T5Z2MoelbUwYDna3uhDleHlR+XXvXlcBe9HS1qNo/+O6JHA6DokjhsCgSgiu9A9UH/g8FiaAoNIyPY2s+yLKIWqPzx5ooioR+cW9yeW/uxWVQJAQjL94dn6VQJAwjB3dGFEVSMHJw8yaOImkYdV5/tQyKvoK/6Q+/J34wjrestgh8IIqwd+DxFoftDGtu8FYqAqrnGwmbi91o2hMsSkLLZG1jPQAAAABJRU5ErkJggg=="></h3></div>
+
+<%= render 'form', task: @task %>
+
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit Task</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<br>
+
+<!-- <%= link_to 'New Task', new_task_path %> -->
